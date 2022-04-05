@@ -15,6 +15,6 @@ require (
 )
 
 replace (
-	oras.land/oras-go/pkg => /home/sajay/code/src/github.com/Wwwsylvia/oras-go/pkg
-	oras.land/oras-go/v2 => /home/sajay/code/src/github.com/Wwwsylvia/oras-go
+	oras.land/oras-go/pkg => /home/sajay/code/src/github.com/sajayantony/oras-go/pkg
+	oras.land/oras-go/v2 => /home/sajay/code/src/github.com/sajayantony/oras-go
 )
