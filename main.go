@@ -29,7 +29,6 @@ func main() {
 }
 
 func fetchManifest(ref string) (string, error) {
-	ref = "localhost:5000/hello-world:latest"
 	//	ref = "localhost:5000/hello-world:latest@sha256:f54a58bc1aac5ea1a25d796ae155dc228b3f0e11d046ae276b39c4bf2f13d8c4"
 	fmt.Println(ref)
 	ctx := context.Background()
@@ -39,7 +38,7 @@ func fetchManifest(ref string) (string, error) {
 	}
 
 	repo.PlainHTTP = true
-	desc, rc, err := repo.FetchReference(ctx, ref)
+	_, rc, err := repo.FetchReference(ctx, ref)
 	if err != nil {
 		panic(err)
 	}
