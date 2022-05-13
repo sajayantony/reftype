@@ -5,15 +5,39 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io"
 	"os"
-	"strings"
+
+	"github.com/spf13/cobra"
 
 	ocispec "github.com/opencontainers/image-spec/specs-go/v1"
 	registry "oras.land/oras-go/v2/registry/remote"
 )
 
-func main() {
+type refsOptions struct {
+	targetRef string
+}
+
+func refsCmd() *cobra.Command {
+	var opts refsOptions
+	cmd := &cobra.Command{
+		Use:   "refs <name:tag|name@digest>",
+		Short: "Lists ref-types for a given reference",
+
+		Args: cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			opts.targetRef = args[0]
+			return runManifest(opts)
+		},
+	}
+
+	return cmd
+}
+
+func runRefs(opts refsOptions) error {
+	return fetchReferrers(opts.targetRef)
+}
+
+func mainold() {
 
 	mnftcmd := flag.NewFlagSet("manifest", flag.ExitOnError)
 	refscmd := flag.NewFlagSet("refs", flag.ExitOnError)
@@ -63,29 +87,6 @@ func main() {
 	}
 }
 
-func fetchManifest(ref string) (string, error) {
-	//	ref = "localhost:5000/hello-world:latest@sha256:f54a58bc1aac5ea1a25d796ae155dc228b3f0e11d046ae276b39c4bf2f13d8c4"
-	// fmt.Println(ref)
-	ctx := context.Background()
-	repo, err := registry.NewRepository(ref)
-	if err != nil {
-		panic(err)
-	}
-	setPlainHttp(repo)
-
-	_, rc, err := repo.FetchReference(ctx, ref)
-	if err != nil {
-		panic(err)
-	}
-
-	buf := new(strings.Builder)
-	_, err = io.Copy(buf, rc)
-	if err != nil {
-		return "", err
-	}
-	return buf.String(), err
-}
-
 func fetchReferrers(ref string) error {
 
 	ctx := context.Background()
@@ -101,6 +102,7 @@ func fetchReferrers(ref string) error {
 	if err != nil {
 		return err
 	}
+
 	if err = repo.Referrers(ctx, desc, func(refs []ocispec.Descriptor) error {
 		for _, r := range refs {
 			d, err := json.Marshal(r)
@@ -114,10 +116,4 @@ func fetchReferrers(ref string) error {
 	}
 
 	return nil
-}
-
-func setPlainHttp(repo *registry.Repository) {
-	if repo.Reference.Host() == "localhost" || strings.HasPrefix(repo.Reference.Host(), "localhost:") {
-		repo.PlainHTTP = true
-	}
 }
