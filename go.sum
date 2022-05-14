@@ -10,8 +10,8 @@ github.com/opencontainers/image-spec v1.0.2/go.mod h1:BtxoFyWECRxE4U/7sNtV5W15zM
 github.com/oras-project/artifacts-spec v1.0.0-draft.1.1 h1:2YMUDyDH0glYA4gNG/zEg9HNVzgGX8kr/NBLR9AQkLQ=
 github.com/oras-project/artifacts-spec v1.0.0-draft.1.1/go.mod h1:Xch2aLzSwtkhbFFN6LUzTfLtukYvMMdXJ4oZ8O7BOdc=
 github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
-github.com/sajayantony/oras-go/v2 v2.0.0-20220512230320-01aec7d64b23 h1:gCwY+XUFLJIx/aYkSewiJ3kEpOOsSetF9h2bV0cHMzs=
-github.com/sajayantony/oras-go/v2 v2.0.0-20220512230320-01aec7d64b23/go.mod h1:bkLYFn96fxOhSNbckPxvFCwpiS4IrvV55KfgEXWOGB8=
+github.com/sajayantony/oras-go/v2 v2.0.0-20220514032313-2aca3fbf5e9d h1:RyDo/deoZWtDZmcAlgupXgQOIfiTNxwYFdmLhM/YeFA=
+github.com/sajayantony/oras-go/v2 v2.0.0-20220514032313-2aca3fbf5e9d/go.mod h1:bkLYFn96fxOhSNbckPxvFCwpiS4IrvV55KfgEXWOGB8=
 github.com/spf13/cobra v1.4.0 h1:y+wJpx64xcgO1V+RcnwW0LEHxTKRi2ZDPSBjWnrg88Q=
 github.com/spf13/cobra v1.4.0/go.mod h1:Wo4iy3BUC+X2Fybo0PDqwJIv3dNRiZLHQymsfxlB84g=
 github.com/spf13/pflag v1.0.5 h1:iy+VFUOCP1a+8yFto/drg2CJ5u0yRoB7fZw3DKv/JXA=

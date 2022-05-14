@@ -41,6 +41,7 @@ func runManifest(opts refsOptions) error {
 }
 
 func fetchManifest(ref string) (string, error) {
+
 	//	ref = "localhost:5000/hello-world:latest@sha256:f54a58bc1aac5ea1a25d796ae155dc228b3f0e11d046ae276b39c4bf2f13d8c4"
 	// fmt.Println(ref)
 	ctx := context.Background()
@@ -60,5 +61,6 @@ func fetchManifest(ref string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
 	return buf.String(), err
 }
